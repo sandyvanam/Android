@@ -23,6 +23,15 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
 
+    signingConfigs {
+        release {
+            keyAlias 'Maveric'
+            keyPassword 'Maveric@123'
+            storeFile file('../mav_android.keystore')
+            storePassword 'Maveric@123'
+        }
+    }
+
     defaultConfig {
         applicationId "com.android.example.text.styling"
         minSdkVersion rootProject.minSdkVersion
@@ -33,6 +42,7 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             postprocessing {
                 removeUnusedCode false
                 removeUnusedResources false
